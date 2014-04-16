@@ -1,18 +1,62 @@
-set nocompatible
-source $VIMRUNTIME/mswin.vim
-source ~/.vundle
+"mouse mode--windows
+source $VIMRUNTIME/vimrc_example.vim 
+source $VIMRUNTIME/mswin.vim 
 behave mswin
+source $VIMRUNTIME/vimrc_example.vim 
+"Multiple cursors 
+source ~/.vundle
 
+"no compatible with vi"
+set nocompatible
+set nobackup
+set noswapfile
+
+"highlight
+"highlight in line
+"set cursorline
+"highlight in search
+set hlsearch 
+
+"syntax brightness and test synax auto
 syntax on
-filetype plugin on
-
-set exrc
+syntax enable
 
 "about tab
-set autoindent
-set smartindent
+"For python "|" if use tab for indent
+"set list lcs=tab:\|\
+"display tab
+"set list 
+"set listchars=tab:>-,trail:- 
+set autoindent " same level indent
+set smartindent " next level indent
 set smarttab
 set expandtab
+"the tab in c/c++
+set cindent
+
+"normap
+noremap <F5> :!python %
+noremap <F2> :NERDTree
+
+"color
+set background =dark
+if has ('gui_running')
+   color slate
+   "set guifont=Monospace\ Bold\ 11
+else
+   color torte
+endif
+
+"test the type of file
+filetype on
+filetype plugin on
+
+"autocmd
+"indent for different filetype
+autocmd filetype * set shiftwidth=4 tabstop=4
+autocmd filetype python set suffixesadd=
+autocmd filetype markdown set wrap
+autocmd FileType ruby,haml,erb,html,slim,yaml,scss,sass,coffee,treetop,htmldjango setlocal shiftwidth=2 tabstop=2
 
 " encoding . utf-8 rules!
 " let $LANG="zh_CN.UTF-8" " locales
@@ -21,179 +65,67 @@ set ambiwidth=double
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
 set encoding=utf-8
-set term=screen-256color
-
-" misc
-set nu
-set wildmenu
-set wildignore+=*.o,*.obj,.git,*.pyc,*/venv/*
-set ruler
-set tags=./tags,./../tags,./../../tags
-
-" ^c^V i don't know how these about
-set laststatus=2
-set scrolloff=4
-set lbr
-set fo+=mB
-set showmatch
-set cin
-set cino=g0:0t0(sus
-" set guifont=WenQuanYi\ Micro\ Hei\ Mono
-set hls
-set backspace=indent,eol,start
-set shiftround
-" set whichwrap=b,s,<,>,[,]
-set bsdir=buffer
-set smartcase
-
-set nowrap
-set autoread
-set autowrite
-
-" trade off the gnome maximized bug
-set showtabline=2
-
-" this may help with NERDTree but bad with FuzzyFinder
-" set autochdir
-autocmd BufEnter * lcd %:p:h
-
-set noswapfile
-set nobackup
-set nowritebackup
-
-set t_Co=256
-color molokai
-
-if !has('gui_running')
-    au InsertEnter * set cursorline
-    au InsertLeave * set nocursorline
+"gvim's font,for mor--help guifont
+if has("gui_gtk2")
+	set guifont=Bitstream\ Vera\ Sans\ Mono\ 12,Fixed\ 12
+    set guifontwide=Microsoft\ Yahei\ 12,WenQuanYi\ Zen\ Hei\ 12
 endif
 
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * silent! set colorcolumn=80
-    autocmd WinLeave * silent! set colorcolumn=0
-augroup END
+"misc
+set wildmenu
+set nu
+set go=
+set ruler
+set wildignore+=*.pyc,*.o,*.obj,.git,
+set background=dark
+set incsearch
 
-" toolbar sucks
-set guioptions=ir
-
-au BufEnter * checktime
-au BufNewFile,BufRead *.tt,*.treetop setf treetop
-au BufNewFile,BufRead *.slim set ft=slim
-au BufNewFile,BufRead *.scss set ft=scss
-au BufNewFile,BufRead *.sass set ft=sass
-au BufNewFile,BufRead *.coffee set ft=coffee
-au BufNewFile,BufRead *.md set ft=markdown
-au BufNewFile,BufRead *vundle set ft=vim
-au BufNewFile,BufRead Gemfile,Rakefile,rakefile set ft=ruby
-au BufNewFile,BufRead .bash_aliases set ft=sh
-
-autocmd FileType * set shiftwidth=4
-autocmd FileType * set tabstop=4
-autocmd FileType ruby,haml,html,erb,slim,yaml,scss,sass,coffee,treetop set shiftwidth=2
-autocmd FileType ruby,haml,html,erb,slim,yaml,scss,sass,coffee,treetop set tabstop=2
-autocmd FileType python set suffixesadd=
-autocmd FileType markdown set wrap
-
-" trailing white space
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
-" delete trailing blank on save
-fun! DelTrailingBlank()
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  :%s/\s\+$//e
-  let @/=_s
-  call cursor(l, c)
-endfun
-
-" au BufWritePre * :call DelTrailingBlank()
-
-" change the annoying paren match
-hi MatchParen cterm=bold ctermbg=none ctermfg=none
-
+"shortcuts"
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+set winaltkeys=no
 " key bindings
-noremap <C-T>n :tabn<cr>
-noremap <C-T>p :tabp<cr>
-
+noremap <c-Right> :tabn<cr>
+noremap <c-left>  :tabp<cr> 
 noremap <C-\> :vs<cr>
 noremap vv <C-Q>
-
+" pageup & down is annoying
+noremap <PageUp> gk
+noremap <PageDown> gj 
 inoremap <PageUp> <esc>gka
 inoremap <PageDown> <esc>gja
-
 " windows
 noremap <C-Up> <C-W>k<C-W>_
-noremap <C-Down> <C-W>j<C-W>_
-
+noremap <C-Down> <C-W>j<C-W>_ 
 noremap <C-\> :vs<cr>
 
-" v
-noremap <UP> gk
-noremap <Down> gj
-noremap <LEFT> h
-noremap <Right> l
-" a workaround
-nnoremap <Esc>A <up>
-nnoremap <Esc>B <down>
-nnoremap <Esc>C <right>
-nnoremap <Esc>D <left>
+"unit test ??
+if has("sutocmd")
+    filetype plugin indent on
+    auto FileType python setlocal et | setlocal sta |setlocal sw=4
+    autocmd FileType python compiler python
+    autocmd FileType python setlocal makeprg=python\ ./alltests.py
+    autocmd BufNewFile,BufRead test*.py setlocal makeprg=python\ %
+    autocmd BufNewFile test*.py 0r ~/.vim/skeleton/test.py
+    autocmd BufNewFile alltests.py 0r ~/.vim/skeleton/alltests.py
+    autocmd BufNewFile *.py 0r ~/.vim/skeleton/skeleton.py
+endif
 
-inoremap <C-Backspace> <C-w>
-
-noremap q :w<cr>
-
-cnoreabbrev qt tabc
-
-"
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " on plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree
-let NERDTreeIgnore = ['\env','\.vim$', '\~$', '\.pyc$', '\.o$', '\.swp$', '\.egg-info$', '^dist$', '^build$']
-let NERDTreeSortOrder = ['Makefile', '\/$', '\.py$', '\.rb$', '\.md$', '\.html$', '*', '^test_', '\.swp$', '\~$']
+let NERDTreeIgnore = ['\env','\.vim$', '\~$', '\.pyc$', '\.o$', '\.swp$','\.egg-info$', '^dist$', '^build$']
+let NERDTreeSortOrder = ['Makefile', '\/$', '\.py$', '\.rb$', '\.md$','\.html$', '*', '^test_', '\.swp$', '\~$']
 let NERDTreeShowBookmarks = 1
 let NERDTreeHightlightCursorline = 1
 let NERDTreeDirArrows = 0
 
-" Vimwiki
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_camel_case = 0
-let g:vimwiki_CJK_length = 1
-let g:vimwiki_list = [{'path': '~/code/wiki/vimwiki/src/',
-                    \ 'path_html': '~/code/wiki/vimwiki/',
-                    \ 'html_header': '~/code/wiki/vimwiki/src/tpl/head.tpl',
-                    \ 'html_footer': '~/code/wiki/vimwiki/src/tpl/foot.tpl'}
-                    \ ]
+"For markdown
+let g:vim_markdown_folding_disabled=0
 
-" minibufexplorer
 
-" CtrlP
-let g:ctrlp_root_markers = ['.ctrlp', '.git']
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '/venv/\|/tmp/cache/\|/coverage/\|/vendor/',
-            \ 'file': '\.exe$\|\.so$'
-            \ }
 
-nnoremap <silent> <Leader>t :CtrlP<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-
-" for a.vim
-noremap <Leader>a :A<cr>
-
-" for taglist
-noremap <Leader>s :Tlist<cr>
-
-" for ack.vim
-let g:ackprg="ack-grep -H --column"
-
-" for Hammer.vim
-let g:HAMMER_BROWSER = 'w3m'
 
