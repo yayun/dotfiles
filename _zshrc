@@ -66,8 +66,9 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+source ~/.bash_common
 source ~/.bash_aliases
-alias gfw='python ~/Downloads/goagent-goagent-673c9fd/local/proxy.py'
+alias gfw='python ~/Documents/goagent-goagent-673c9fd/local/proxy.py'
 alias sshd='ssh -qTfnN -D 7070 paython@216.194.70.6'
 alias vim="stty stop '' -ixoff ; vim"                               
-alias cl="clear"                        
+alias cl="clear"

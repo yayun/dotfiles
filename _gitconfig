@@ -1,6 +1,6 @@
 [user]
-name = Li Yazhou
-email = me.ssword@gmail.com
+name = Xu Yayun
+email = yayunx@gmail.com
 
 [push]
 default = upstream
@@ -42,7 +42,7 @@ status = a status-update
 
 [sendemail]
 smtpencryption = tls
-smtpuser = me.ssword@gmail.com
+smtpuser = yayunx@gmail.com
 smtpserverport = 587
 smtpserver = smtp.gmail.com
-from = Li Yazhou <me.ssword@gmail.com>
+from = Xu Yayun<yayunx@gmail.com>

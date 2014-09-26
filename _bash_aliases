@@ -6,10 +6,18 @@ alias vundle="vim +BundleInstall +qall"
 alias rake='noglob rake'
 alias vag='vagrant'
 
+# for autonavi
+alias sns="cd ~/code/autonavi/sns"
+alias maps="cd ~/code/autonavi/aos/2.0/maps"
+alias amaps="cd ~/code/autonavi/aos-amaps/amaps"
+alias oss="cd ~/code/autonavi/aos/2.0/oss"
+
 # for python
 alias de="dae venv"
 alias dja="django-admin.py"
 alias djs="dj runserver"
+alias djq="dj sql"
+alias djsy="dj syncdb"
 alias djm="dj schemamigration --auto"
 alias ipy='ipython3'
 alias py='python'
@@ -20,7 +28,6 @@ alias myschema='mysqldump -d'
 
 # for utils
 alias pkill='killall'
-alias ls='ls --color=auto -X --group-directories-first'
 alias gvim="gvim -f"
 alias ll='ls -alF'
 alias la='ls -A'

@@ -81,24 +81,24 @@ set background=dark
 set incsearch
 
 "shortcuts"
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-O>:update<CR>
-set winaltkeys=no
+" <silent> <C-S>          :update<CR>
+"vnoremap <silent> <C-S>         <C-C>:update<CR>
+"inoremap <silent> <C-S>         <C-O>:update<CR>
+"set winaltkeys=no
 " key bindings
-noremap <c-Right> :tabn<cr>
-noremap <c-left>  :tabp<cr> 
-noremap <C-\> :vs<cr>
-noremap vv <C-Q>
+"noremap <c-Right> :tabn<cr>
+"noremap <c-left>  :tabp<cr> 
+"noremap <C-\> :vs<cr>
+"noremap vv <C-Q>
 " pageup & down is annoying
-noremap <PageUp> gk
-noremap <PageDown> gj 
-inoremap <PageUp> <esc>gka
-inoremap <PageDown> <esc>gja
+"noremap <PageUp> gk
+"noremap <PageDown> gj 
+"inoremap <PageUp> <esc>gka
+"noremap <PageDown> <esc>gja
 " windows
-noremap <C-Up> <C-W>k<C-W>_
-noremap <C-Down> <C-W>j<C-W>_ 
-noremap <C-\> :vs<cr>
+"noremap <C-Up> <C-W>k<C-W>_
+"noremap <C-Down> <C-W>j<C-W>_ 
+"noremap <C-\> :vs<cr>
 
 "unit test ??
 if has("sutocmd")
@@ -126,6 +126,5 @@ let NERDTreeDirArrows = 0
 "For markdown
 let g:vim_markdown_folding_disabled=0
 
-
-
-
+"For JEDI
+let g:jedi#completions_command = "<C-N>"

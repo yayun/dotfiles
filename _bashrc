@@ -106,3 +106,11 @@ source $HOME/.bash_common
 source $HOME/.bash_aliases
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#export DJANGO_SETTINGS_MODULE=sns.test_settings
+#export DJANGO_SETTINGS_MODULE=sns.settings
+#export PYTHONPATH=/Users/yayunx/code/autonavi/aos/2.0/sns
+#export DJANGO_SETTINGS_MODULE=maps.settings
+#export PYTHONPATH=/Users/yayunx/code/autonavi/aos/2.0/maps
+#export DJANGO_SETTINGS_MODULE=oss.settings
+#export PYTHONPATH=/Users/yayunx/code/autonavi/aos/2.0/oss
+
